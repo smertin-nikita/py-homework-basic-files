@@ -1,5 +1,6 @@
 import os
 import collections as c
+import functools as ft
 
 
 def print_cook_book(cook_book):
@@ -12,16 +13,19 @@ def print_cook_book(cook_book):
 
 def get_shop_list_by_dishes(dishes, person_count):
     shop_list = {}
+
     for dish in dishes:
         if dish in cook_book:
             for ingredient in cook_book[dish]:
                 name = ingredient['ingredient_name']
-                quantity = int(ingredient['quantity']) * person_count
-                measure = ingredient['measure']
-                shop_list[name] = {
-                    'quantity': quantity,
-                    'measure': measure
-                }
+                if name not in shop_list:
+                    shop_list[name] = {}.fromkeys(['measure', 'quantity'], 0)
+                    shop_list[name]['quantity'] = shop_list[name].get('quantity', 0) + ingredient[
+                        'quantity'] * person_count
+                    shop_list[name]['measure'] = ingredient['measure']
+                else:
+                    shop_list[name]['quantity'] = shop_list[name].get('quantity', 0) + ingredient['quantity'] * person_count
+                    shop_list[name]['measure'] = ingredient['measure']
     return shop_list
 
 
@@ -39,10 +43,10 @@ with open(file_path, encoding='utf-8') as f:
                 ingredient_name, quantity, measure = next(f).rstrip('\n').split(' | ')
                 cook_book[dish].append({
                     'ingredient_name': ingredient_name,
-                    'quantity': quantity,
+                    'quantity': int(quantity),
                     'measure': measure
                 })
 
 
 print_cook_book(cook_book)
-print(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
+print(get_shop_list_by_dishes(['Фахитос', 'Омлет'], 2))
