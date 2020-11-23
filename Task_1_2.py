@@ -1,6 +1,4 @@
 import os
-import collections as c
-import functools as ft
 
 
 def print_cook_book(cook_book):
@@ -9,6 +7,12 @@ def print_cook_book(cook_book):
         for ingredient in cook_book[dish]:
             print('     ', ingredient)
         print()
+
+
+def print_shop_list(shop_list):
+    for ingredient in shop_list.items():
+        print(ingredient)
+    print()
 
 
 def get_shop_list_by_dishes(dishes, person_count):
@@ -20,17 +24,12 @@ def get_shop_list_by_dishes(dishes, person_count):
                 name = ingredient['ingredient_name']
                 if name not in shop_list:
                     shop_list[name] = {}.fromkeys(['measure', 'quantity'], 0)
-                    shop_list[name]['quantity'] = shop_list[name].get('quantity', 0) + ingredient[
-                        'quantity'] * person_count
-                    shop_list[name]['measure'] = ingredient['measure']
-                else:
-                    shop_list[name]['quantity'] = shop_list[name].get('quantity', 0) + ingredient['quantity'] * person_count
-                    shop_list[name]['measure'] = ingredient['measure']
+                shop_list[name]['quantity'] = shop_list[name].get('quantity', 0) + ingredient['quantity'] * person_count
+                shop_list[name]['measure'] = ingredient['measure']
     return shop_list
 
 
 cook_book = {}
-Ingredient = c.namedtuple('Ingredient', ['ingredient_name', 'quantity', 'measure'])
 
 file_path = os.path.join(os.getcwd(), '2.4.files/recipes.txt')
 with open(file_path, encoding='utf-8') as f:
@@ -49,4 +48,4 @@ with open(file_path, encoding='utf-8') as f:
 
 
 print_cook_book(cook_book)
-print(get_shop_list_by_dishes(['Фахитос', 'Омлет'], 2))
+print_shop_list(get_shop_list_by_dishes(['Фахитос', 'Омлет'], 2))
