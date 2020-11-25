@@ -2,7 +2,7 @@ import os
 import os.path as op
 from collections import namedtuple
 
-files_dir = op.join(os.getcwd(), '2.4.files/sorted/')
+files_dir = op.join(os.getcwd(), 'sorted/')
 data = []
 File = namedtuple('File', ['name', 'text'])
 

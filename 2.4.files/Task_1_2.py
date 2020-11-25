@@ -31,7 +31,7 @@ def get_shop_list_by_dishes(dishes, person_count):
 
 cook_book = {}
 
-file_path = os.path.join(os.getcwd(), '2.4.files/recipes.txt')
+file_path = os.path.join(os.getcwd(), 'recipes.txt')
 with open(file_path, encoding='utf-8') as f:
     for line in f:
         if line != '\n':
