@@ -1,6 +1,6 @@
-# Домашня работа по теме открытие «Открытие и чтение файла, запись в файл»
+# Домашня работа по теме открытие «Работа с разными форматами данных»
 ___
 
 
-* [Задача №1](https://github.com/netology-code/py-homeworks-basic/tree/master/7.files#задача-1) и [Задача №2](https://github.com/netology-code/py-homeworks-basic/tree/master/7.files#задача-2) выполнены в файле Task_1_2.py
-* [Задача №3](https://github.com/netology-code/py-homeworks-basic/tree/master/7.files#задача-3) выполнена в файле Task_3.py
+* [Задача №1](https://github.com/netology-code/py-homeworks-basic/tree/master/8.formats.json.xml#задача-1) выполнена в файле Task_1.py
+* [Задача №2](https://github.com/netology-code/py-homeworks-basic/tree/master/8.formats.json.xml#задача-2) выполнена в файле Task_2.py
